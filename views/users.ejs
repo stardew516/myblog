@@ -1,0 +1,13 @@
+<%- include('../common/header')%>
+  <h1><%= name.toUpperCase()%></h1>
+  <h1><% name.toUpperCase()%></h1>
+  <h1><%- name.toUpperCase()%></h1>
+  <p>hello, <%= name%></p>
+  <ul>
+    <% for(var i=0; i<friends.length; i++) {%>
+      <li>
+        <%= friends[i]%>
+      </li>
+    <%}%>
+  </ul>
+<%- include('../common/footer')%>
