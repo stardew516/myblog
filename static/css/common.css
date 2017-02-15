@@ -1,0 +1,32 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 0 10px;
+  border-radius: 0;
+  color: #fff;
+  z-index: 9999;
+  /*background: linear-gradient(to right,rgba(78,170,76,.5),rgba(0,202,133,.5)),#4eaa4c;*/
+}
+.pdt120 {
+  padding-top: 120px;
+}
+.pdt80 {
+  padding-top: 80px;
+}
+.avator {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.mgt20 {
+  margin-top: 20px;
+}
+.editor-content {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

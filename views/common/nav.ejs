@@ -1,0 +1,49 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">博客系统</a>
+    </div>
+    <div>
+      <!--向左对齐-->
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            基础博客
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">数据结构</a></li>
+            <li><a href="#">网络编程</a></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="navbar-text navbar-left">前端博客</p>
+
+      <!--向右对齐-->
+      <% if (username) { %>
+      <p class="navbar-text navbar-right">
+        <a href="/signout">退出
+          <i class="glyphicon glyphicon-arrow-up"></i>
+        </a>
+      </p>
+      <% } %>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            我的空间<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">我的博客</a></li>
+            <li><a href="#">我的收藏夹</a></li>
+          </ul>
+        </li>
+      </ul>
+      <% if (username) { %>
+      <p class="navbar-text navbar-right">
+        <%= username%>您好,
+      </p>
+      <% } %>
+    </div>
+  </div>
+</nav>

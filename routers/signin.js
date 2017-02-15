@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/users');
 var checkNotLogin = require('../utils/check').checkNotLogin;
+
+// 登录页面
 router.get('/', checkNotLogin, function(req, res, next) {
   res.render('signin', {
     title: '登录'
