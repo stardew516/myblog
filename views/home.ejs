@@ -19,10 +19,20 @@
     </ul>
   </div>
   <div class="col-xs-9 col-sm-9">
-    <ul class="list-unstyled">
-      <li><%= username%></li>
-      <li></li>
-      <li></li>
+    <ul class="list-unstyled article-list">
+    <% for(var i= 0, len=result.length; i<len; i++) {
+      var blog = result[i];
+    %>
+      <li>
+        <div class="page-header">
+          <h5>
+            <a href="/home/article?id=<%= blog._id%>"><span class="glyphicon glyphicon-link"></span>  <%= blog.title%></a>
+          </h5>
+          <p><small>作者: <%= blog.author%></small></p>
+          <p class="ellipse"><small>摘要: <%= blog.abstract%></small></p>
+        </div>
+      </li>
+    <%}%>
     </ul>
   </div>
 </div>

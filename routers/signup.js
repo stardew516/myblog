@@ -16,12 +16,11 @@ router.get('/', checkNotLogin, function(req, res, next) {
 // 用户注册post
 router.post('/', checkNotLogin, function(req, res, next) {
   // 用户名判断唯一
-  const username = req.fields.username;
-  const email = req.fields.email;
-  const phone = req.fields.phone;
-  const password = req.fields.password;
-  const confirmPassword = req.fields.confirmPassword;
-  console.log(username, email, phone, sha1(password), confirmPassword);
+  const username = req.body.username;
+  const email = req.body.email;
+  const phone = req.body.phone;
+  const password = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
   var user = {
     username: username,
     email: email,
@@ -39,7 +38,6 @@ router.post('/', checkNotLogin, function(req, res, next) {
       res.redirect('/signin');
     })
     .catch(function (e) {
-      console.log('e.message', e.message);
       if (e.message.match('E11000 duplicate key')) {
         req.flash('info', '用户名已被注册!');
         return res.redirect('/signup');

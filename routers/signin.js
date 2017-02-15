@@ -14,10 +14,9 @@ router.get('/', checkNotLogin, function(req, res, next) {
 
 // 用户登录post
 router.post('/', checkNotLogin, function(req, res, next) {
-  const username = req.fields.username;
-  var password = req.fields.passwordOne;
-  var remember = req.fields.remember;
-  console.log(password, remember);
+  var username = req.body.username;
+  var password = req.body.passwordOne;
+  var remember = req.body.remember;
   password = sha1(password);
   UserModel.getUserByName(username)
     .then(function (user) {

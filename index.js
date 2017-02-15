@@ -30,7 +30,9 @@ app.use(function (err, req, res, next) {
 
 app.use('/success', function (req, res, next) {
   console.log('success');
-  res.render('success');
+  res.render('success', {
+    url: '/home'
+  });
   next();
 });
 
@@ -54,12 +56,6 @@ app.use(function (req, res, next) {
   res.locals.infos = req.flash('info');
   next();
 });
-
-// 处理表单中间件
-//app.use(require('express-formidable')({
-//  uploadDir: path.join(__dirname, 'static/upload'),// 上传文件目录
-//  keepExtensions: true// 保留后缀
-//}));
 
 // 正常请求日志
 app.use(expressWinston.logger({
