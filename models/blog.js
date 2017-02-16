@@ -35,7 +35,7 @@ module.exports = {
   // 通过类别查询博客
   getBlogByClassify: function getBlogByClassify(classify) {
     return Blog
-      .findOne({ classify: classify })
+      .find({ classify: classify })
       .addCreatedAt()
       .exec();
   }

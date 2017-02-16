@@ -30,8 +30,20 @@
         <div class="page-header">
           <h5>
             <a href="/home/article?id=<%= blog._id%>"><span class="glyphicon glyphicon-link"></span>  <%= blog.title%></a>
+            <% if (blog.isPublish == 0) {%>
+            <a href="#" class="btn btn-info btn-xs disabled" role="button">
+              未发布
+            </a>
+            <%} else {%>
+            <a href="#" class="btn btn-success btn-xs disabled" role="button">
+              已发布
+            </a>
+            <%}%>
           </h5>
-          <p><small class="c9">作者: <%= blog.author%></small></p>
+          <p class="c9 row">
+            <small class="col-sm-3">作者: <%= blog.author%></small>
+
+          </p>
           <p class="ellipse c6"><small>摘要: <%= blog.abstract%></small></p>
         </div>
       </li>

@@ -73,27 +73,8 @@ router.post('/publishBlog', checkLogin, function(req, res, next) {
   }
 });
 
-// 点击查看博客内容
-router.get('/article', checkLogin, function(req, res, next) {
-  const id = req.query.id;
-  console.log('reqid', id);
-  // 根据_id读取博客内容
-  BlogModel.getBlogById(id)
-    .then(function (result) {
-      res.render('blog', {
-        title: result.title,
-        username: req.session.user.username,
-        result: result
-      })
-    })
-    .catch(function (e) {
-      console.log('error', e.message);
-      next(e);
-    });
-});
-
 // 编辑完后保存博客内容
-router.get('/saveBlog', checkLogin, function(req, res, next) {
+router.post('/saveBlog', checkLogin, function(req, res, next) {
   const title = req.body.title;
   const abstract = req.body.abstract;
   const content = req.body.content;
@@ -118,10 +99,27 @@ router.get('/saveBlog', checkLogin, function(req, res, next) {
     });
 });
 
+// 点击查看博客内容
+router.get('/article', checkLogin, function(req, res, next) {
+  const id = req.query.id;
+  // 根据_id读取博客内容
+  BlogModel.getBlogById(id)
+    .then(function (result) {
+      res.render('blog', {
+        title: result.title,
+        username: req.session.user.username,
+        result: result
+      })
+    })
+    .catch(function (e) {
+      console.log('error', e.message);
+      next(e);
+    });
+});
+
 // 修改博客
 router.get('/modify', checkLogin, function(req, res, next) {
   const id = req.query.id;
-  console.log('reqid', id);
   // 根据_id读取博客内容
   BlogModel.getBlogById(id)
     .then(function (result) {
@@ -137,7 +135,7 @@ router.get('/modify', checkLogin, function(req, res, next) {
     });
 });
 
-// 编辑完后保存博客内容
+// 删除博客
 router.get('/delete', checkLogin, function(req, res, next) {
   const id = req.query.id;
   console.log('reqid', id);
@@ -146,6 +144,26 @@ router.get('/delete', checkLogin, function(req, res, next) {
     .then(function (result) {
       req.flash('info', '删除成功');
       res.redirect('/success');
+    })
+    .catch(function (e) {
+      console.log('error', e.message);
+      next(e);
+    });
+});
+
+// 按类别查找博客
+router.get('/classifyBlog', checkLogin, function(req, res, next) {
+  const classify = Number(req.query.classify);
+  console.log('reqid', classify);
+  // 根据_id读取博客内容
+  BlogModel.getBlogByClassify(classify)
+    .then(function (result) {
+      console.error('blogResult', result);
+      res.render('home', {
+        title: result.title,
+        username: req.session.user.username,
+        result: result
+      })
     })
     .catch(function (e) {
       console.log('error', e.message);
