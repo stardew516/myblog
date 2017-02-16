@@ -2,16 +2,21 @@
 <%- include('common/header') %>
 <%- include('common/nav') %>
 
-
-<div class="row pdt120">
-  <div class="col-sm-12">
+<div class="pdlr20 pdt80 pl">
+  <h1 class="text-center c6">
       <%= result.title%>
+  </h1>
+  <h5 class="text-center pd10 c9">
+    作者: <%= result.author%>
+  </h5>
+  <div class="c6">
+    <%- result.content%>
   </div>
-    <div class="col-sm-12">
-      <%= result.abstract%>
-    </div>
-    <div class="col-sm-12">
-      <%= result.content%>
-    </div>
+
+  <a class="opBlog modify cf" href="/home/modify?id=<%= result._id%>">编辑</a>
+  <a id="delete" class="opBlog delete cf" href="/home/delete?id=<%= result._id%>">删除</a>
 </div>
+
+<script src="/js/blog.js"></script>
+<%- include('common/popup') %>
 <%- include('common/footer') %>

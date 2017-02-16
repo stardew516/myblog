@@ -20,22 +20,6 @@ app.set('view engine', 'ejs');
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'static')));
 
-// 错误页
-app.use(function (err, req, res, next) {
-  console.log('err', err);
-  res.render('error', {
-    error: err
-  });
-});
-
-app.use('/success', function (req, res, next) {
-  console.log('success');
-  res.render('success', {
-    url: '/home'
-  });
-  next();
-});
-
 // session 中间件
 app.use(session({
   name: config.session.key,
@@ -82,6 +66,23 @@ app.use(expressWinston.errorLogger({
     })
   ]
 }));
+
+
+// 错误页
+app.use(function (err, req, res, next) {
+  console.log('err', err);
+  res.render('error', {
+    error: err
+  });
+});
+
+app.use('/success', function (req, res, next) {
+  console.log('success');
+  res.render('success', {
+    url: '/home'
+  });
+  next();
+});
 
 app.use(bodyParser.urlencoded({
   extended: true

@@ -1,3 +1,43 @@
+body {
+  font-size: 14px;
+  font-family: Microsoft YaHei,PingFangSC-Light,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,STHeitiSC-Light,Arial,sans-serif;
+}
+.c6 {
+  color: #666;
+}
+.c9 {
+  color: #999;
+}
+.cf {
+  color: #fff;
+}
+.fs12 {
+  font-size: 12px;
+}
+.pl {
+  position: relative;
+}
+.pdt120 {
+  padding-top: 120px;
+}
+.top120 {
+  top: 120px;
+}
+.pdlr20 {
+  padding: 0 20px;
+}
+.pd10 {
+  padding: 10px;
+}
+.pdt80 {
+  padding-top: 80px;
+}
+.lh100 {
+  line-height: 100px;
+}
+.mgauto {
+  margin: 0 auto;
+}
 .navbar {
   position: fixed;
   width: 100%;
@@ -8,12 +48,7 @@
   color: #fff;
   z-index: 9999;
 }
-.pdt120 {
-  padding-top: 120px;
-}
-.pdt80 {
-  padding-top: 80px;
-}
+
 .avator {
   width: 100px;
   height: 100px;
@@ -36,4 +71,38 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.copyright {
+  line-height: 50px;
+  text-align: center;
+  background-color: #fff;
+}
+.opBlog {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  right: -80px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.modify {
+  top: 160px;
+  background-color: #666;
+}
+.delete {
+  background-color: #cc0000;
+  top: 260px;
+}
+.modify:hover {
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+.delete:hover {
+  background-color: #ff1f11;
+  color: #fff;
+  text-decoration: none;
 }

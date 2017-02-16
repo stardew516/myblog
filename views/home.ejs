@@ -19,6 +19,9 @@
     </ul>
   </div>
   <div class="col-xs-9 col-sm-9">
+    <% if (!result.length) {%>
+      <p class="text-center c9 lh100"><span class="glyphicon glyphicon-question-sign"></span>  暂无博客</p>
+    <%}%>
     <ul class="list-unstyled article-list">
     <% for(var i= 0, len=result.length; i<len; i++) {
       var blog = result[i];
@@ -28,8 +31,8 @@
           <h5>
             <a href="/home/article?id=<%= blog._id%>"><span class="glyphicon glyphicon-link"></span>  <%= blog.title%></a>
           </h5>
-          <p><small>作者: <%= blog.author%></small></p>
-          <p class="ellipse"><small>摘要: <%= blog.abstract%></small></p>
+          <p><small class="c9">作者: <%= blog.author%></small></p>
+          <p class="ellipse c6"><small>摘要: <%= blog.abstract%></small></p>
         </div>
       </li>
     <%}%>

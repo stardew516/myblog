@@ -7,8 +7,13 @@ module.exports = {
   },
 
   // 保存博客
-  update: function update(blog) {
-    return Blog.update({id: blog.id }, { $set: blog }).exec();
+  update: function update(id, blog) {
+    return Blog.update({_id: id }, { $set: blog }).exec();
+  },
+
+  // 删除博客
+  remove: function remove(id) {
+    return Blog.remove({_id: id }).exec();
   },
 
   // 通过用户名查询博客

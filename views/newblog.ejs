@@ -5,45 +5,47 @@
 <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
 
 <form id="checkForm" class="form-horizontal" role="form" method="post" action="/home/publishBlog">
+  <input type="hidden" id="id" name="id" value="<%= blog._id%>"/>
   <div class="form-group pdt80">
     <label for="title" class="col-sm-1 control-label">标题</label>
     <div class="col-sm-11">
       <input type="text" class="form-control" id="title" name="title"
-             placeholder="请输入标题">
+             placeholder="请输入标题" value="<%= blog.title%>">
     </div>
   </div>
   <div class="form-group">
     <label for="abstract" class="col-sm-1 control-label">摘要</label>
     <div class="col-sm-11">
       <input type="text" class="form-control" id="abstract" name="abstract"
-             placeholder="请输入摘要">
+             placeholder="请输入摘要" value="<%= blog.abstract%>">
     </div>
   </div>
   <div class="form-group">
     <label for="content" class="col-sm-1 control-label">内容</label>
     <div class="col-sm-11">
-      <script id="content" name="content" type="text/plain" style="height: 360px;" class="editor-content" placeholder="请输入内容"></script>
+      <script id="content" name="content" type="text/plain" style="height: 360px;" class="editor-content" placeholder="请输入内容">
+        <%- blog.content%>
+      </script>
     </div>
   </div>
   <div class="form-group">
     <label for="classify" class="col-sm-1 control-label">分类</label>
     <div class="col-sm-11">
       <select class="form-control" id="classify" name="classify">
-        <option value="1">基础</option>
-        <option value="11">数据结构</option>
-        <option value="12">网络编程</option>
-        <option value="2">前端</option>
-        <option value="21">html</option>
-        <option value="22">css</option>
-        <option value="23">javascript</option>
-        <option value="24">框架</option>
-        <option value="3">其它</option>
+        <% var classify = [{id: 1, name: "基础"}, {id: 11, name: "数据结构"}, {id: 12, name: "网络编程"}, {id: 2, name: "前端"}, {id: 21, name: "html"}, {id: 22, name: "css"}, {id: 23, name: "javascript"}, {id: 24, name: "框架"}, {id: 3, name: "其它"}];
+          for (var i= 0, len=classify.length; i<len; i++){
+            var cly = classify[i];
+        %>
+            <option value="<%= cly.id%>" <%if (blog.classify == cly.id) { %> selected <%}%>><%= cly.name%></option>
+        <%}%>
       </select>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <a href="/home/saveBlog" class="btn btn-default">保存</a>
+      <% if(!blog._id) {%>
+        <a href="/home/saveBlog" class="btn btn-default">保存</a>
+      <%}%>
       <button type="submit" class="btn btn-default">发布</button>
     </div>
   </div>
